@@ -10,7 +10,7 @@ Goal:
 
 
 // regex way
-const regexMuls = /(mul\(\d+,\d+\)|do\(\)|don't\(\))/g;
+const regexMuls = /(mul\(\d+,\d+\))/g;
 const regexNums = /\d+/g;
 
 const muls = data.match(regexMuls);
@@ -22,26 +22,9 @@ console.log(muls);
 let power = true;
 
 for (const mul of muls) {
-  // do() 2 (
-  // don't() 2 n
-  // mul() 2 l
-  
-  switch (mul[2]) {
-    case '(':
-      power = true;
-      break;
-    case 'n':
-      power = false;
-      break;
-    case 'l':
-      if (power) {
-        const factors = mul.match(regexNums);
-        sum += factors[0] * factors[1];
-        console.log('power!', factors[0], ' x ', factors[1], ' = ', factors[0] * factors[1])
-      }
-      break;
-  }
-
+  const factors = mul.match(regexNums);
+  sum += factors[0] * factors[1];
+  console.log('power!', factors[0], ' x ', factors[1], ' = ', factors[0] * factors[1])
 }
 
 console.log(sum);
