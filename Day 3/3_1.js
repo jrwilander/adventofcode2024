@@ -19,8 +19,6 @@ let sum = 0;
 
 console.log(muls);
 
-let power = true;
-
 for (const mul of muls) {
   const factors = mul.match(regexNums);
   sum += factors[0] * factors[1];
